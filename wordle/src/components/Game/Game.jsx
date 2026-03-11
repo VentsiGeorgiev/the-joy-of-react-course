@@ -6,7 +6,6 @@ import { answer } from "../../data/data";
 import GameForm from "../GameForm/GameForm";
 
 function Game() {
-  console.log("answer", answer);
   const [words, setWords] = useState(wordsInitialState);
   const [isGuessed, setIsGuessed] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);

@@ -10,7 +10,6 @@ function GameForm({ handleGuess }) {
     e.preventDefault();
 
     if (guess.length !== 5) {
-      console.log(guess.length);
       setErrorMessage("The required length of word should be 5 letters");
       return;
     }
