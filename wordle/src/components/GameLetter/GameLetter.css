@@ -1,0 +1,25 @@
+.letter-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  border: 2px solid #dee1e9;
+  background-color: #fbfcff;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: 1.75rem;
+}
+.letter-box--match {
+  border-color: #79b851;
+  background-color: #79b851;
+}
+.letter-box--exists {
+  border-color: #f3c237;
+  background-color: #f3c237;
+}
+
+.letter-box--no-exist {
+  background-color: #a4aec4;
+}

@@ -1,0 +1,23 @@
+.game-form {
+  width: 100%;
+}
+
+.game-form .game-form__label,
+.game-form .game-form__input {
+  display: block;
+  width: 100%;
+  font-size: 1.5rem;
+}
+.game-form .game-form__input {
+  border: 2px solid #dee1e9;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.game-form .game-form__error-message {
+  color: #c90d0d;
+  background: #ff000029;
+  padding: 8px;
+  border: 1px solid #c90d0d;
+  border-radius: 8px;
+}
