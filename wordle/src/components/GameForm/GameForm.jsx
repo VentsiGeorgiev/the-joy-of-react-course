@@ -32,7 +32,7 @@ function GameForm({ handleGuess }) {
           name="guess"
           id="guess"
           value={guess}
-          onChange={(e) => setGuess(e.target.value.toUpperCase())}
+          onChange={(e) => setGuess(e.target.value.toUpperCase().slice(0, 5))}
           disabled={attempts === 6}
           className="game-form__input"
         />
