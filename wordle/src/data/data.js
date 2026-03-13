@@ -30,6 +30,13 @@ const words = [
   "water",
 ];
 
-export const answer = words[Math.floor(Math.random() * words.length)]
-  .toUpperCase()
-  .split(" ");
+export const getRandomWord = () => {
+  return words[Math.floor(Math.random() * words.length)].toUpperCase();
+};
+
+export const getFreshWords = () => {
+  return wordsInitialState.map((word) => ({
+    ...word,
+    letters: [...word.letters],
+  }));
+};
