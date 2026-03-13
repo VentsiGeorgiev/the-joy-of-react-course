@@ -4,19 +4,19 @@ import "./GameForm.css";
 function GameForm({ handleGuess }) {
   const [guess, setGuess] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [attempts, setAttempts] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (guess.length !== 5) {
-      setErrorMessage("The required length of word should be 5 letters");
+    const trimmedGuess = guess.trim();
+
+    if (trimmedGuess.length !== 5) {
+      setErrorMessage("Guess must be 5 letters.");
       return;
     }
 
     setErrorMessage("");
-    setAttempts((prev) => prev + 1);
-    handleGuess(attempts, guess);
+    handleGuess(trimmedGuess);
     setGuess("");
   };
   return (
@@ -24,15 +24,15 @@ function GameForm({ handleGuess }) {
       <label className="game-form__label">
         Enter guess:
         <input
+          type="text"
+          id="guess"
+          name="guess"
+          value={guess}
+          onChange={(e) => setGuess(e.target.value.toUpperCase().slice(0, 5))}
+          pattern="[A-Za-z]{5}"
           required
           minLength={5}
           maxLength={5}
-          type="text"
-          name="guess"
-          id="guess"
-          value={guess}
-          onChange={(e) => setGuess(e.target.value.toUpperCase().slice(0, 5))}
-          disabled={attempts === 6}
           className="game-form__input"
         />
       </label>

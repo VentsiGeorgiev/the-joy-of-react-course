@@ -1,34 +1,43 @@
 import { useState } from "react";
-import { wordsInitialState } from "../../data/data";
+import { getFreshWords, getRandomWord } from "../../data/data";
 import "./Game.css";
 import GameWord from "../GameWord/GameWord";
-import { answer } from "../../data/data";
 import GameForm from "../GameForm/GameForm";
+import GameOverCard from "../GameOverCard/GameOverCard";
 
 function Game() {
-  const [words, setWords] = useState(wordsInitialState);
-  const [isGuessed, setIsGuessed] = useState(false);
-  const [isGameOver, setIsGameOver] = useState(false);
+  const [words, setWords] = useState(getFreshWords);
+  const [answer, setAnswer] = useState(getRandomWord);
+  const [attempts, setAttempts] = useState(0);
 
-  const handleGuess = (attempt, guess) => {
+  const currentWord = words[attempts];
+  const hasCurrentGuess = currentWord?.letters.some((letter) => letter !== "");
+  const isGuessed = hasCurrentGuess && currentWord.letters.join("") === answer;
+  const isLastAttempt = attempts === words.length - 1;
+  const isGameOver = isGuessed || (isLastAttempt && hasCurrentGuess);
+
+  const handleGuess = (guess) => {
     const lettersArray = guess.split("");
     const updated = words.map((word) =>
-      word.attempt === attempt ? { ...word, letters: lettersArray } : word,
+      word.attempt === attempts ? { ...word, letters: lettersArray } : word,
     );
+
     setWords(updated);
-    if (guess === answer[0]) {
-      setIsGuessed(true);
-      setIsGameOver(true);
-    } else if (attempt === 5) {
-      setIsGuessed(false);
-      setIsGameOver(true);
+
+    if (guess === answer) {
+      return;
     }
+    if (isLastAttempt) {
+      return;
+    }
+
+    setAttempts((prev) => prev + 1);
   };
 
   const handleStartNewGame = () => {
-    setWords(wordsInitialState);
-    setIsGuessed(false);
-    setIsGameOver(false);
+    setWords(getFreshWords);
+    setAttempts(0);
+    setAnswer(getRandomWord());
   };
 
   return (
@@ -40,17 +49,11 @@ function Game() {
         {!isGameOver ? (
           <GameForm handleGuess={handleGuess} />
         ) : (
-          <div
-            className={`game__card ${isGuessed ? "game__card-win" : "game__card-lost"}`}
-          >
-            <p className="game__card-title">
-              {isGuessed ? "You win!" : "You lost!"}
-            </p>
-            <p className="game__card-title">Word: {answer}</p>
-            <button className="game__card-button" onClick={handleStartNewGame}>
-              New game
-            </button>
-          </div>
+          <GameOverCard
+            isGuessed={isGuessed}
+            answer={answer}
+            handleStartNewGame={handleStartNewGame}
+          />
         )}
       </section>
     </main>

@@ -1,27 +1,23 @@
+import { getLetterStatuses } from "../../utils.js/getLetterStatus";
 import GameLetter from "../GameLetter/GameLetter";
 import "./GameWord.css";
 
 function GameWord({ word, answer }) {
   const { letters } = word;
-  const answerArray = answer[0].split("");
+  const isPlayedRow = letters.some((letter) => letter !== "");
+  const statuses = isPlayedRow ? getLetterStatuses(letters, answer) : [];
 
   return (
     <div className="word-wrapper">
-      {letters.map((letter, index) => {
-        let status = "";
-        if (letters.some((letter) => letter !== "")) {
-          if (letter === answerArray[index]) {
-            status = "match";
-          } else if (answerArray.includes(letter)) {
-            status = "exists";
-          } else {
-            status = "no-exist";
-          }
-        }
-
-        return <GameLetter letter={letter} key={index} status={status} />;
-      })}
+      {letters.map((letter, index) => (
+        <GameLetter
+          key={index}
+          letter={letter}
+          status={statuses[index] || ""}
+        />
+      ))}
     </div>
   );
 }
+
 export default GameWord;

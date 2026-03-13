@@ -5,28 +5,3 @@
   justify-content: center;
   gap: 1rem;
 }
-
-.game__card {
-  width: 100%;
-  padding: 8px;
-  color: #fff;
-  border: 2px solid #dee1e9;
-  border-radius: 8px;
-}
-
-.game__card-win {
-  background-color: #79b851;
-}
-
-.game__card-lost {
-  background-color: #f3c237;
-}
-
-.game__card-title {
-  font-size: 2rem;
-  font-weight: bold;
-}
-.game__card-button {
-  font-size: 1.5rem;
-  color: rgb(41, 41, 41);
-}
