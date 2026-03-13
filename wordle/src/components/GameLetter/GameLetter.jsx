@@ -1,6 +1,7 @@
 import "./GameLetter.css";
 
 function GameLetter({ letter, status }) {
-  return <span className={`letter-box letter-box--${status}`}>{letter}</span>;
+  const className = status ? `letter-box letter-box--${status}` : "letter-box";
+  return <span className={className}>{letter}</span>;
 }
 export default GameLetter;
