@@ -32,7 +32,6 @@ function ToastForm() {
         <div className={style.inputWrapper}>
           <h3>Message:</h3>
           <label className={style.inputRow}>
-            Text:
             <textarea
               name="message-text"
               id="message-text"

@@ -1,8 +1,31 @@
 .inputLabel {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  transition: background-color 150ms ease, color 150ms ease;
 }
+
 .inputLabel,
 .input {
   cursor: pointer;
+}
+
+.inputLabel:hover {
+  background-color: rgba(7, 7, 56, 0.08);
+}
+
+.input {
+  accent-color: var(--primary-color);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.inputLabel:has(.input:checked) {
+  color: var(--primary-color);
+  background-color: rgba(7, 7, 56, 0.12);
 }
