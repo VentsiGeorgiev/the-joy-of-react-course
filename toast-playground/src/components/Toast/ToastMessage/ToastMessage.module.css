@@ -1,0 +1,105 @@
+.wrapper {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 20;
+  display: grid;
+  gap: 1rem;
+  width: min(420px, calc(100vw - 2rem));
+}
+
+.toast {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border: 2px solid currentColor;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: toast-enter 300ms ease-out;
+}
+
+.variant {
+  margin-bottom: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.message {
+  color: inherit;
+}
+
+.dismissButton {
+  align-self: flex-start;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: inherit;
+}
+
+.timerBar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: currentColor;
+  transform-origin: left center;
+  animation: timer-bar-shrink var(--duration) linear forwards;
+  opacity: 0.8;
+}
+
+.notice {
+  background: #e8f1ff;
+  color: #1e40af;
+}
+
+.warning {
+  background: #fff4e6;
+  color: #ea580c;
+}
+
+.success {
+  background: #e9fbf0;
+  color: #15803d;
+}
+
+.error {
+  background: #ffeaea;
+  color: #dc2626;
+}
+
+@keyframes toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) translateX(18px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+  }
+}
+
+@keyframes timer-bar-shrink {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    top: 1rem;
+    right: 1rem;
+    left: 1rem;
+    width: auto;
+  }
+}
