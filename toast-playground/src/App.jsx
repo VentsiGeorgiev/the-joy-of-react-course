@@ -1,4 +1,5 @@
 import "./App.css";
+import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import ToastPlayground from "./components/Toast/ToastPlayground/ToastPlayground";
 
@@ -7,6 +8,7 @@ function App() {
     <main className="container">
       <Header />
       <ToastPlayground />
+      <Footer />
     </main>
   );
 }
