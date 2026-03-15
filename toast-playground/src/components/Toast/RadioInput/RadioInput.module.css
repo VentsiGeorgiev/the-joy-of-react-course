@@ -1,4 +1,8 @@
-.inputRow {
+.inputLabel {
   display: flex;
   gap: 0.5rem;
+}
+.inputLabel,
+.input {
+  cursor: pointer;
 }

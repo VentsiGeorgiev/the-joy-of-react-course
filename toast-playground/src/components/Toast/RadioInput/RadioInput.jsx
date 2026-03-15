@@ -6,11 +6,12 @@ function InputRadio() {
   return (
     <>
       {VARIANTS.map((variant, index) => (
-        <label className={style.inputRow} key={index}>
+        <label className={style.inputLabel} key={index}>
           <input
             type="radio"
             name="message-variant"
             id={`${variant}${index}`}
+            className={style.input}
           />
           {variant}
         </label>
