@@ -1,7 +1,12 @@
 import "./App.css";
+import { Header } from "./components/Header";
 
 function App() {
-  return <h1>Toast Playground</h1>;
+  return (
+    <main>
+      <Header />
+    </main>
+  );
 }
 
 export default App;
