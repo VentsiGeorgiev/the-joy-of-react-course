@@ -1,40 +1,115 @@
-# Toast Playground
+# Toast Playground (React)
 
-A small React + Vite playground for building and testing a custom toast notification system.
+A small toast notification playground built with **React** as part of a
+learning exercise focused on state management, reusable components, and
+UI behavior in modern React apps.
 
-## Overview
+The goal of the project was to practice:
 
-This project lets you create toast messages through a simple form and preview how different toast variants behave in the UI.
+- component composition
+- controlled forms
+- React context
+- custom hooks
+- transient UI state
+- timed side effects
+- small interactive UI patterns
 
-Each toast:
-- is created from the form submit action
-- appears in the top-right corner of the screen
-- is added with the newest message on top
-- can be dismissed manually
-- disappears automatically after 10 seconds
-- shows a small animated timer bar for the remaining lifetime
+---
 
-## Variants
+## Live Demo
 
-The playground currently supports four toast variants:
+**Live App:**  
+[https://toast-playground-lilac.vercel.app/](https://toast-playground-lilac.vercel.app/)
 
-- `Notice` - blue
-- `Warning` - orange
-- `Success` - green
-- `Error` - yellow
+---
+
+## Features
+
+- Create toast messages from a form
+- Four toast variants:
+  - `Notice` - blue
+  - `Warning` - orange
+  - `Success` - green
+  - `Error` - yellow
+- Newest toast appears at the top
+- Toasts appear in the top-right corner
+- Manual dismiss button
+- Auto-dismiss after 10 seconds
+- Animated timer bar showing remaining lifetime
+- Lightweight entry animation for each new toast
+
+---
+
+## Tech Stack
+
+- **React**
+- **JavaScript (ES6+)**
+- **CSS Modules**
+- **Vite**
+- **Vercel** (deployment)
+
+---
 
 ## Project Structure
 
-Main toast-related files live in [`src/components/Toast`](/d:/2026-code/the-joy-of-react-course/toast-playground/src/components/Toast):
+```text
+src
+|
+|-- components
+|   |-- Header
+|   `-- Toast
+|       |-- context
+|       |   |-- ToasterContext.jsx
+|       |   `-- useToaster.js
+|       |-- RadioInput
+|       |-- ToastForm
+|       |-- ToastMessage
+|       `-- ToastPlayground
+|
+|-- App.jsx
+|-- App.css
+|-- index.css
+`-- main.jsx
+```
 
-- [`ToastPlayground/ToastPlayground.jsx`](/d:/2026-code/the-joy-of-react-course/toast-playground/src/components/Toast/ToastPlayground/ToastPlayground.jsx) wires the provider, message list, and form together
-- [`ToastForm/ToastForm.jsx`](/d:/2026-code/the-joy-of-react-course/toast-playground/src/components/Toast/ToastForm/ToastForm.jsx) handles the message form and submit logic
-- [`ToastMessage/ToastMessage.jsx`](/d:/2026-code/the-joy-of-react-course/toast-playground/src/components/Toast/ToastMessage/ToastMessage.jsx) renders active toast notifications
-- [`RadioInput/RadioInput.jsx`](/d:/2026-code/the-joy-of-react-course/toast-playground/src/components/Toast/RadioInput/RadioInput.jsx) renders the variant selector
-- [`context/ToasterContext.jsx`](/d:/2026-code/the-joy-of-react-course/toast-playground/src/components/Toast/context/ToasterContext.jsx) stores toast state and auto-dismiss logic
-- [`context/useToaster.js`](/d:/2026-code/the-joy-of-react-course/toast-playground/src/components/Toast/context/useToaster.js) exposes the custom hook for consuming toast state
+---
 
-## Getting Started
+## Toast Behavior
+
+The toast system uses a shared context provider to manage all active
+notifications.
+
+- New toasts are inserted at the start of the array so the latest one is always shown first
+- Each toast gets its own timeout when created
+- Toasts can be removed either manually or automatically
+- Timer cleanup is handled in the provider to avoid stale timeouts
+
+---
+
+## What I Focused On
+
+This project was mainly about improving my understanding of:
+
+- **where shared UI state should live**
+- managing temporary UI elements with React context
+- connecting form state to global UI feedback
+- keeping presentation and state logic separate
+- building small polished interactions with simple tools
+
+---
+
+## Possible Future Improvements
+
+- exit animation before toast removal
+- pausing the timer on hover
+- keyboard accessibility improvements
+- toast icons per variant
+- swipe-to-dismiss interactions
+- unit tests for toast provider behavior
+
+---
+
+## Installation
 
 Install dependencies:
 
@@ -42,42 +117,22 @@ Install dependencies:
 npm install
 ```
 
-Start the development server:
+Run locally:
 
 ```bash
 npm run dev
 ```
 
-Open the local Vite URL shown in the terminal and try creating toast messages from the form.
-
-## Available Scripts
-
-```bash
-npm run dev
-```
-
-Runs the app in development mode.
-
-```bash
-npm run build
-```
-
-Builds the app for production.
-
-```bash
-npm run preview
-```
-
-Previews the production build locally.
+Other useful scripts:
 
 ```bash
 npm run lint
+npm run build
+npm run preview
 ```
 
-Runs ESLint for the project.
+---
 
-## Notes
+## Author
 
-- The project uses React context to share toast state across components.
-- Auto-dismiss timing is managed in the toast provider.
-- Styling is done with CSS Modules for component-level isolation.
+Built as a React learning project.
