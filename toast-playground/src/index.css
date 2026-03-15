@@ -3,6 +3,10 @@
   --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
+  --primary-color: #070738;
+  --accent-color: #83aff0;
+  --light-blue-color: #f0f4ff;
+
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color-scheme: light dark;
@@ -71,4 +75,9 @@ button {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+body {
+  background-color: var(--primary-color);
+  color: var(--light-blue-color);
 }
