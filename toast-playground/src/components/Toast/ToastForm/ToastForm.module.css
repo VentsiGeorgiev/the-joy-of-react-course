@@ -1,0 +1,39 @@
+.formContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+  max-width: 650px;
+  padding: 1rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 0.5rem;
+  background-color: var(--light-blue-color);
+  color: var(--primary-color);
+}
+
+.textAreaInput {
+  background-color: var(--light-blue-color);
+}
+.inputWrapper {
+  margin-bottom: 1rem;
+}
+
+.inputRow {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.submitButton {
+  padding: 0.5rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 0.5rem;
+  background-color: var(--primary-color);
+  color: var(--light-blue-color);
+}
+.submitButton:hover {
+  background-color: var(--light-blue-color);
+  color: var(--primary-color);
+}
